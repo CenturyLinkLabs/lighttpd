@@ -3,6 +3,6 @@
 lighttpd -D -f /etc/lighttpd/lighttpd.conf &
 
 while true; do
-    sed 's/$/<br>/' /log  | tac > /var/www/index.html
-    sleep 5
+    tail -50 /var/log/syslog | tac | sed 's/$/<br>/' > /var/www/index.html
+    sleep 2
 done
